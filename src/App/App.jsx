@@ -16,13 +16,13 @@ export default function App() {
 
   function decrementCount(evt) {
     evt.preventDefault();
-    setCount( (prevValue) => prevValue - 1);
+    setCount((prevValue) => prevValue - 1);
   }
 
-  console.log(count)
+  console.log(count, styles);
   return (
     <>
-      {(count > MIN_LIMIT) ? <button className={'black'} onClick={decrementCount}>&minus;</button> : <></>}<p className={styles['black']}>{count}</p>{(count < MAX_LIMIT) ? <button className={'black'} onClick={incrementCount}>+</button> : <></>}
+      {(count > MIN_LIMIT) ? <button className={'button'} onClick={decrementCount}>&minus;</button> : <></>}<p className={styles['black']}>{count}</p>{(count < MAX_LIMIT) ? <button className={styles['button']} onClick={incrementCount}>+</button> : <></>}
     </>
   )
 }
