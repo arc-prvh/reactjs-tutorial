@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-
+import React, { useState, useEffect } from 'react'
 import styles from './App.module.css'
 
 const MAX_LIMIT = 5;
@@ -19,10 +18,23 @@ export default function App() {
     setCount( (prevValue) => prevValue - 1);
   }
 
-  console.log(count)
+  useEffect( () => {
+    if(count > 3) {
+      return;
+    }
+    fetch('http://ip-api.com/json/24.48.0.1?fields=45674495').then( (res) => res.json() )
+    .then( (res) => {
+      console.log(res);
+    })
+    .catch( err => {
+      console.error(err)
+    });
+
+  }, [])
+
   return (
     <>
-      {(count > MIN_LIMIT) ? <button className={'black'} onClick={decrementCount}>&minus;</button> : <></>}<p className={styles['black']}>{count}</p>{(count < MAX_LIMIT) ? <button className={'black'} onClick={incrementCount}>+</button> : <></>}
+      <p>Hello world</p>
     </>
   )
 }
